@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobDao;
 import kodlamaio.hrms.entities.concretes.Job;
 
@@ -21,9 +23,9 @@ public class JobManager implements JobService {
 	}
 
 	@Override
-	public List<Job> getAll() {
+	public DataResult<List<Job>> getAll() {
 	
-		return this.jobDao.findAll();
+		return new SuccessDataResult<List<Job>>(this.jobDao.findAll(),"Başarıyla listelendi");
 	}
 
 }
