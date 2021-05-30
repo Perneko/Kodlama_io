@@ -2,17 +2,28 @@ package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import kodlamaio.hrms.entities.abstracts.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="employees")
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@PrimaryKeyJoinColumn(name="user_id", referencedColumnName="user_id")
 public class Employee extends User {
+	
+	@Id
+	@Column(name="user_id")
+	private int userId;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -21,13 +32,8 @@ public class Employee extends User {
 	private String lastName;
 	
 	
-	public Employee() {}
-
-	public Employee(int userId,String email, String password,String firstName, String lastName) {
-		super(userId,email,password);
-		this.firstName = firstName;
-		this.lastName = lastName;
-		
-	}
+	
+	
+	
 	
 }

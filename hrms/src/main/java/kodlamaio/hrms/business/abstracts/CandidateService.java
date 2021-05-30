@@ -1,12 +1,5 @@
 package kodlamaio.hrms.business.abstracts;
 
-import java.util.List;
+public class CandidateService {
 
-
-import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.entities.concretes.Candidate;
-
-
-public interface CandidateService {
-	DataResult<List<Candidate>> getAll();
 }

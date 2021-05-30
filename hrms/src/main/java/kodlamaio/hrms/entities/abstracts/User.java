@@ -6,18 +6,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.persistence.InheritanceType;
+import javax.persistence.Inheritance;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="Users")
+@AllArgsConstructor
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
-public abstract class User {
+public class User {
+	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_id")
-	private int UserId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	  
+	@Column(name="user_id") private int UserId;
+	 
 	
 	@Column(name="email")
 	private String email;
@@ -25,14 +32,8 @@ public abstract class User {
 	@Column(name="password")
 	private String password;
 	
-	public User() {}
-
-	public User(int userId, String email, String password) {
-		super();
-		UserId = userId;
-		this.email = email;
-		this.password = password;
-	}
+	@Column(name="verify")
+	private boolean verify;
 	
 	
 	

@@ -4,17 +4,28 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import kodlamaio.hrms.entities.abstracts.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="candidates")
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "user_id")
 @Data
-@PrimaryKeyJoinColumn(name="user_id", referencedColumnName="user_id")
 public class Candidate extends User{
+	
+//	@Id
+//	@Column(name="user_id")
+//	private int userId;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -28,19 +39,13 @@ public class Candidate extends User{
 	@Column(name="birth_date")
 	private LocalDate birthDate;
 	
-	private String passwordAgain;
+	
+	
 	
 
-	public Candidate() {}
 	
-	public Candidate(int userId,String email, String password,String firstName, String lastName, String identificationNumber, LocalDate birthDate, String passwordAgain) {
-		super(userId,email,password);
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.identificationNumber = identificationNumber;
-		this.birthDate = birthDate;
-		this.passwordAgain=passwordAgain;
-	}
+	
+	
 	
 	
 	
