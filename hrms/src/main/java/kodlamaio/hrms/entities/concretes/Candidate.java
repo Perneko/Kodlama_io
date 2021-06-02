@@ -4,28 +4,30 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import kodlamaio.hrms.entities.abstracts.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Table(name="candidates")
-@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "user_id")
-@Data
-public class Candidate extends User{
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
+public class Candidate {
 	
-//	@Id
-//	@Column(name="user_id")
-//	private int userId;
+	@Id
+    @Column(name="user_id")
+	private int userId;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -36,18 +38,9 @@ public class Candidate extends User{
 	@Column(name="identification_number")
 	private String identificationNumber;
 	
-	@Column(name="birth_date")
-	private LocalDate birthDate;
+	@Column(name="birth_data")
+	private LocalDate birthData;
 	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
+	@OneToOne
+	private User user;
 }
