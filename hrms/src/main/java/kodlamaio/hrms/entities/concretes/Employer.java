@@ -4,11 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -22,38 +17,28 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="candidates")
+@Table(name="employers")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
-public class Candidate extends User {
-	
-//	@Id
-//  @Column(name="user_id")
-//	@JoinColumn(name="userId")
-//	private int userId;
+public class Employer extends User {
 	
 	@NotBlank
 	@NotNull
-	@Column(name="first_name")
-	private String firstName;
+	@Column(name="company_name")
+	private String companyName;
 	
 	@NotBlank
 	@NotNull
-	@Column(name="last_name")
-	private String lastName;
+	@Column(name="web_site_name")
+	private String webSiteName;
 	
 	@NotBlank
 	@NotNull
-	@Column(name="identification_number")
-	private String identificationNumber;
+	@Column(name="phone_number")
+	private String phoneNumber;
 	
-	@NotBlank
-	@NotNull
-	@Column(name="birth_date")
-	private LocalDate birthData;
-	
-//	@OneToOne
-//	private User user;
+	@Column(name="user_confirm")
+	private boolean userConfirm;
 }
